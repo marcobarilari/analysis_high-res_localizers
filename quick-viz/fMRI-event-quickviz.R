@@ -1,6 +1,9 @@
 library('ggplot2')
+library('gridExtra')
 
-eventFilePath <- '/Users/barilari/data/V5_high-res_pilot-1_raw/sub-pilot001/ses-001/func/sub-pilot001_ses-001_task-visualLocalizer_run-002_events.tsv'
+eventFilePath <- '/Users/barilari/data/V5_high-res_pilot-1_raw/sub-pilot001/ses-001/func/sub-pilot001_ses-001_task-auditoryLocalizer_run-001_events.tsv'
+
+plotPosterName = 'sub-pilot001_ses-001_task-auditoryLocalizer_run-001_eventsPlot.pdf'
 
 eventFile <- read.table(file = eventFilePath, 
                         header = T)
@@ -108,4 +111,9 @@ for (iBlock in 1:max(eventFile$block)){
   print(plotBlock[[iBlock]])
   
 }
+
+plotPoster <- do.call(grid.arrange,  c(plotBlock, nrow=max(eventFile$block)))
+
+ggsave(plotPosterName, plot = plotPoster, device="pdf", path = '~/Desktop/', units="in", width=20, height=49, dpi=300) 
+
 
