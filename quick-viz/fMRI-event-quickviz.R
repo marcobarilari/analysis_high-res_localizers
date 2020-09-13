@@ -114,6 +114,6 @@ for (iBlock in 1:max(eventFile$block)){
 
 plotPoster <- do.call(grid.arrange,  c(plotBlock, nrow=max(eventFile$block)))
 
-ggsave(plotPosterName, plot = plotPoster, device="pdf", path = '~/Desktop/', units="in", width=20, height=49, dpi=300) 
+ggsave(plotPosterName, plot = plotPoster, device="pdf", path = '~/Desktop/', units="in", width=20, height=100, dpi='retina', limitsize = F) 
 
 
